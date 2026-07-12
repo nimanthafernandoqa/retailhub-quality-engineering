@@ -1,44 +1,22 @@
-# RetailHub Quality Engineering Portfolio
+# Playwright Automation Framework
 
 ## Overview
 
-This repository documents my journey to build a modern Quality Engineering platform around a retail e-commerce application.
+This project contains the Playwright automation framework for the RetailHub Quality Engineering Portfolio.
 
-The objective is to demonstrate practical experience in:
+The framework will demonstrate enterprise automation practices using TypeScript.
 
-- Web Automation (Playwright)
-- API Automation
-- Mobile Automation (Appium)
-- Performance Testing (JMeter & k6)
-- AI-assisted Testing
-- CI/CD Integration
+## Planned Features
 
----
+- Page Object Model
+- Fixtures
+- API Testing
+- Data-driven testing
+- Parallel execution
+- HTML Reports
+- GitHub Actions
+- Authentication reuse
 
-## Project Structure
+## Status
 
-docs/
-QA strategy, architecture and documentation.
-
-playwright/
-Web automation framework.
-
-api/
-API automation framework.
-
-mobile/
-Mobile automation framework.
-
-performance/
-Performance testing suite.
-
-ai/
-AI-assisted testing experiments and tools.
-
----
-
-## Current Sprint
-
-Sprint 1
-
-Project Foundation
+Sprint 1 - Framework Setup
