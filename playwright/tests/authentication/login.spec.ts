@@ -1,28 +1,60 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/LoginPage';
 
-test('User can log in with valid credentials', async ({ page }) => {
-  await page.goto('/login');
+/**
+ * RetailHub Authentication Test Suite
+ *
+ * Verifies user authentication scenarios.
+ */
+test.describe('RetailHub Login', () => {
 
-  await page.getByLabel('Email').fill('nimantha@retailhub.com');
-  await page.getByLabel('Password').fill('Password123');
-  await page.getByRole('button', { name: 'Login' }).click();
+    let loginPage: LoginPage;
 
-  await expect(page).toHaveURL('/dashboard');
-  await expect(
-    page.getByRole('heading', { name: 'Welcome to RetailHub' })
-  ).toBeVisible();
-});
+    /**
+     * Runs before every test.
+     *
+     * Opens the RetailHub Login page.
+     */
+    test.beforeEach(async ({ page }) => {
 
+        loginPage = new LoginPage(page);
 
-test('User sees an error with invalid credentials', async ({ page }) => {
-  await page.goto('/login');
+        await loginPage.open();
 
-  await page.getByLabel('Email').fill('wrong@retailhub.com');
-  await page.getByLabel('Password').fill('WrongPassword');
-  await page.getByRole('button', { name: 'Login' }).click();
+    });
 
-  await expect(page).toHaveURL('/login');
-  await expect(
-    page.getByText('Invalid email or password')
-  ).toBeVisible();
+    /**
+     * Verify successful authentication
+     * using valid user credentials.
+     */
+    test('User can log in with valid credentials', async ({ page }) => {
+
+        await loginPage.login(
+            'nimantha@retailhub.com',
+            'Password123'
+        );
+
+        await expect(page).toHaveURL('/dashboard');
+
+        await expect(page.getByRole('heading', { name: 'Welcome to RetailHub' })).toBeVisible();
+
+    });
+
+    /**
+     * Verify error message is displayed
+     * when invalid credentials are used.
+     */
+    test('User sees an error with invalid credentials', async ({ page }) => {
+
+        await loginPage.login(
+            'wrong@retailhub.com',
+            'WrongPassword'
+        );
+
+        await expect(page).toHaveURL('/login');
+
+        await expect(loginPage.errorMessage).toBeVisible();
+
+    });
+
 });
