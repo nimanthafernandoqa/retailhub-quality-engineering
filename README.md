@@ -19,4 +19,16 @@ The framework will demonstrate enterprise automation practices using TypeScript.
 
 ## Status
 
-Sprint 1 - Framework Setup
+Sprint 1 - Framework Setup - Completed
+
+## Sprint 2
+
+### Completed
+
+- Built Products page.
+- Implemented dynamic product catalogue.
+- Added Add To Cart functionality.
+- Created ProductsPage Page Object.
+- Automated product verification.
+- Added cart count verification.
+- Improved assertion messages.

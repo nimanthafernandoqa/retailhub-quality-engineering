@@ -3,7 +3,7 @@ const path = require("path");
 
 const app = express();
 const PORT = 3000;
-
+let cart = [];
 // View Engine
 app.set("view engine", "ejs");
 
@@ -37,6 +37,40 @@ app.post("/login", (req, res) => {
 // Dashboard
 app.get("/dashboard", (req, res) => {
     res.render("dashboard");
+});
+
+app.get("/products", (req, res) => {
+  const products = [
+    {
+      id: 1,
+      name: "Laptop",
+      price: 1200,
+    },
+    {
+      id: 2,
+      name: "Mechanical Keyboard",
+      price: 150,
+    },
+    {
+      id: 3,
+      name: "Wireless Mouse",
+      price: 45,
+    },
+  ];
+
+  res.render("products", {
+    products,
+    cartCount: cart.length,
+  });
+});
+
+// Add product to cart
+app.post("/cart/add", (req, res) => {
+  const { productId } = req.body;
+
+  cart.push(Number(productId));
+
+  res.redirect("/products");
 });
 
 // Start Server

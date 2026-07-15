@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RetailHub - Products</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <h1>RetailHub Products</h1>
+    
+    <p>
+  Cart items:
+  <span data-testid="cart-count"><%= cartCount %></span>
+</p>
+
+    <div class="product-container">
+      <% products.forEach((product) => { %>
+        <div class="product-card" data-testid="product-card">
+
+          <h2><%= product.name %></h2>
+
+          <p data-testid="product-price">£<%= product.price %></p>
+
+          <form action="/cart/add" method="POST">
+  <input type="hidden" name="productId" value="<%= product.id %>" />
+
+  <button
+    type="submit"
+    class="add-to-cart"
+    data-testid="add-to-cart-<%= product.id %>"
+  >
+    Add To Cart
+  </button>
+</form>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html>

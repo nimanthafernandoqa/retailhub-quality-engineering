@@ -22,3 +22,21 @@ button {
     padding: 12px;
     cursor: pointer;
 }
+.product-container {
+    display: flex;
+    gap: 20px;
+    margin: 40px;
+}
+
+.product-card {
+    width: 220px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    text-align: center;
+}
+
+.product-card button {
+    width: 100%;
+}
